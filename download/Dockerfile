@@ -11,9 +11,10 @@ COPY links.txt /download/links.txt
 # 使脚本可执行
 RUN chmod +x /download/test.sh
 
+# RUN aria2c -x 10 --disable-ipv6 --input-file /download/links.txt --dir /models --continue
+
 # 设置该脚本作为入口点
-# ENTRYPOINT ["/download/entrypoint.sh"]
+ENTRYPOINT ["/download/test.sh"]
 # 设置该脚本作为入口点，并使容器保持运行状态
 # ENTRYPOINT ["/download/entrypoint.sh", "&&", "tail", "-f", "/dev/null"]
 # ENTRYPOINT ["tail", "-f", "/dev/null"]
-CMD [ "sh", "/download/test.sh"]
