@@ -3,15 +3,14 @@ FROM alpine
 
 RUN apk add parallel aria2
 
+RUN mkdir /download
 # 将 entrypoint.sh 脚本复制到容器中
-COPY test.sh /download/test.sh
+COPY test.sh /download/entrypoint.sh
 COPY links.txt /download/links.txt
 
 # 使脚本可执行
-RUN chmod +x /download/test.sh
-
-# RUN aria2c -x 10 --disable-ipv6 --input-file /download/links.txt --dir /models --continue
+RUN chmod +x /download/entrypoint.sh
 
 # 设置该脚本作为入口点
-ENTRYPOINT ["/download/test.sh"]
+ENTRYPOINT ["/download/entrypoint.sh"]
 # ENTRYPOINT ["tail", "-f", "/dev/null"]

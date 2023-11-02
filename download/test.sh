@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# 在这里放置你想在容器启动时执行的代码
 echo "Hello, World!"
 
 echo "Downloading, this might take a while..."
