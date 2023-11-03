@@ -32,8 +32,10 @@ RUN apt-get update -y && \
 	mkdir /app && \
 	chown -R user:user /app
 
+
+USER root
 COPY . /app/
-USER user
+
 
 COPY requirements_versions.txt /app/requirements_versions.txt
 RUN pip install -r /app/requirements_versions.txt
