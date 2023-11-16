@@ -32,13 +32,10 @@ RUN apt-get update -y && \
 	mkdir /app && \
 	chown -R user:user /app
 
-
 USER root
 COPY . /app/
-
 
 COPY requirements_versions.txt /app/requirements_versions.txt
 RUN pip install -r /app/requirements_versions.txt
 
-# ENTRYPOINT [ "bash", "-c", ". /venv/bin/activate && exec \"$@\"", "--" ]
 CMD [ "python3", "/app/entry_with_update.py", "--listen" ]
